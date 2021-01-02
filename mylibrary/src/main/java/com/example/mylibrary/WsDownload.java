@@ -41,7 +41,10 @@ public class WsDownload {
             e.printStackTrace();
         }
     }
-    public void download(InputStream inputStream, long max, String savePath, ProgressBar progressBar, TextView textView){
+    /**
+    /storage/emulated/0/xxx.jpg(xxx.apk)
+            /storage/emulated/0/mypicter/y42.jpg*/
+    public void download(InputStream inputStream, long max, String savePath, ProgressBar progressBar){
 
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(savePath);

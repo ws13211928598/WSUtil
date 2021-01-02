@@ -17,7 +17,11 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
  */
 public class WsUpLoading {
     private static final String TAG = "asd";
-    /**Gets MultiPartBody.part. Provides the file save path*/
+    /**Gets MultiPartBody.part. Provides the file save path
+     *              /storage/emulated/0/xxx.jpg(xxx.apk)
+     *             /storage/emulated/0/mypicter/y42.jpg
+     *             /storage/emulated/0/Pictures/y28.jpg
+     *             */
     public MultipartBody.Part getMultiPart(String filePath){
         MediaType parse = MediaType.parse("application/octet-stream");
         File file = new File(filePath);
