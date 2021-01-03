@@ -1,5 +1,6 @@
 package com.example.mylibrary;
 
+import android.Manifest;
 import android.app.Activity;
 
 import android.app.FragmentManager;
@@ -8,11 +9,15 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +49,7 @@ import java.nio.channels.Selector;
 import java.util.ArrayList;
 
 import okhttp3.MultipartBody;
+
 
 
 /**
@@ -96,6 +102,20 @@ public class Utilws {
             }
         }).attach();
     }
+
+    /**
+     * CustomReceiver1 customReceiver1 = new CustomReceiver1();
+     *         IntentFilter intentFilter = new IntentFilter("com.example.d1221.receiver");
+     *         intentFilter.setPriority(1);
+     *         registerReceiver(customReceiver1,intentFilter);
+     *
+     *         Intent intent = new Intent("com.example.d1221.receiver");
+     *         intent.putExtra("data","asdasd");
+     *         sendBroadcast(intent);*/
+
+
+
+
 
     public void viewpager2Ws(FragmentActivity this_Context,
                              ViewPager2 viewPager2,
@@ -151,6 +171,7 @@ public class Utilws {
             NotificationManager systemService = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             systemService.createNotificationChannel(notificationChannel);
         }
+
         Notification id = new NotificationCompat.Builder(context, "id")
                 .setSmallIcon(icon)
                 .setContentTitle(title)
@@ -161,6 +182,44 @@ public class Utilws {
         NotificationManagerCompat from = NotificationManagerCompat.from(context);
         from.notify(11,id);
 
+    }
+
+    public void callPhone(int phone){
+        //Manifest.permission.CALL_PHONE
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
+        this.context.startActivity(intent);
+    }
+
+    public ArrayList<TelBean> getLianXiRen(){
+        ArrayList<TelBean> telBeans = new ArrayList<>();
+        ContentResolver contentResolver = context.getContentResolver();
+        String[] PROJECTION = {ContactsContract.Contacts.DISPLAY_NAME,
+                                ContactsContract.Contacts.HAS_PHONE_NUMBER,
+                                ContactsContract.Contacts._ID};
+        Cursor phoneCursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, PROJECTION, null, null, null);
+
+        if (phoneCursor != null){
+            while (phoneCursor.moveToNext()){
+                TelBean telBean = new TelBean();
+                String telDisplayName = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                telBean.setName(telDisplayName);
+                int hasTelNumber = phoneCursor.getInt(phoneCursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+                String contactId = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.Contacts._ID));
+                if (!TextUtils.isEmpty(telDisplayName)&&hasTelNumber == 1){
+                    Cursor phoneNumber = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + contactId, null, null);
+                    if (phoneNumber != null){
+                        while (phoneNumber.moveToNext()){
+                            String telNumber = phoneNumber.getString(phoneNumber.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                            telBean.setName(telNumber);
+                            telBeans.add(telBean);
+                        }
+                        return telBeans;
+                    }
+                }
+
+            }
+        }
+        return null;
     }
 
 

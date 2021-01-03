@@ -32,9 +32,27 @@ public class WsUpLoading {
          * */
         if (file.exists()){
             RequestBody requestBody = RequestBody.create(parse, file);
-            MultipartBody.Part file1 = MultipartBody.Part.createFormData("file", "asd.jpg", requestBody);
-            return file1;
+            MultipartBody.Part part = MultipartBody.Part.createFormData("file", "asd.jpg", requestBody);
+            return part;
             
+        }else {
+            Log.d(TAG, "getMultiPart: 文件不存在");
+            throw new IllegalArgumentException("文件不存在");
+        }
+    }
+
+    public MultipartBody.Part getMultiPart(File file){
+        MediaType parse = MediaType.parse("application/octet-stream");
+
+        /**Determines if the file exists,
+         * returns the XXX object if it does,
+         * prints the log and throws an exception if it doesn't
+         * */
+        if (file.exists()){
+            RequestBody requestBody = RequestBody.create(parse, file);
+            MultipartBody.Part part = MultipartBody.Part.createFormData("file", "asd.jpg", requestBody);
+            return part;
+
         }else {
             Log.d(TAG, "getMultiPart: 文件不存在");
             throw new IllegalArgumentException("文件不存在");
