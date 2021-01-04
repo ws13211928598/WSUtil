@@ -2,7 +2,7 @@ package com.example.mylibrary;
 
 /**
  * created by ws
- * on 2021/1/3
+ * on
  * describe:
  */
 public class TelBean {

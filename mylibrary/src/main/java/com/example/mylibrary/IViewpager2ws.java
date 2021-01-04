@@ -4,7 +4,7 @@ import com.google.android.material.tabs.TabLayout;
 
 /**
  * created by ws
- * on 2021/1/1
+ * on
  * describe:
  */
 public interface IViewpager2ws {

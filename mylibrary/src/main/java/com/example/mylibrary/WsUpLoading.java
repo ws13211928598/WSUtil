@@ -12,7 +12,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 /**
  * created by ws
- * on 2020/12/30
+ * on
  * describe:
  */
 public class WsUpLoading {

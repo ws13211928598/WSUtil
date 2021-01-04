@@ -51,10 +51,9 @@ import java.util.ArrayList;
 import okhttp3.MultipartBody;
 
 
-
 /**
  * created by ws
- * on 2020/12/30
+ * on
  * describe:
  */
 public class Utilws {
@@ -67,20 +66,25 @@ public class Utilws {
         this.context = context;
     }
 
-    /**Pass in context, layout, Toolbar,R.string.app.name*/
-    public void actionBarDrawerToggleWs(Activity activity, DrawerLayout drawerLayout, Toolbar toolbar, int stringName){
+    /**
+     * Pass in context, layout, Toolbar,R.string.app.name
+     */
+    public void actionBarDrawerToggleWs(Activity activity, DrawerLayout drawerLayout, Toolbar toolbar, int stringName) {
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(activity, drawerLayout, toolbar, stringName, stringName);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
-    /**Passing in context,Fragment collection, TabName collection*/
+
+    /**
+     * Passing in context,Fragment collection, TabName collection
+     */
     public void viewpager2Ws(FragmentActivity this_Context,
                              ViewPager2 viewPager2,
                              TabLayout tabLayout,
                              ArrayList<Fragment> fragments,
                              int limit,
                              ArrayList<String> tabItem,
-                             IViewpager2ws iViewpager2ws){
+                             IViewpager2ws iViewpager2ws) {
         viewPager2.setAdapter(new FragmentStateAdapter(this_Context) {
             @NonNull
             @Override
@@ -105,16 +109,14 @@ public class Utilws {
 
     /**
      * CustomReceiver1 customReceiver1 = new CustomReceiver1();
-     *         IntentFilter intentFilter = new IntentFilter("com.example.d1221.receiver");
-     *         intentFilter.setPriority(1);
-     *         registerReceiver(customReceiver1,intentFilter);
-     *
-     *         Intent intent = new Intent("com.example.d1221.receiver");
-     *         intent.putExtra("data","asdasd");
-     *         sendBroadcast(intent);*/
-
-
-
+     * IntentFilter intentFilter = new IntentFilter("com.example.d1221.receiver");
+     * intentFilter.setPriority(1);
+     * registerReceiver(customReceiver1,intentFilter);
+     * <p>
+     * Intent intent = new Intent("com.example.d1221.receiver");
+     * intent.putExtra("data","asdasd");
+     * sendBroadcast(intent);
+     */
 
 
     public void viewpager2Ws(FragmentActivity this_Context,
@@ -122,7 +124,7 @@ public class Utilws {
                              TabLayout tabLayout,
                              ArrayList<Fragment> fragments,
                              int limit,
-                             ArrayList<String> tabItem){
+                             ArrayList<String> tabItem) {
         viewPager2.setAdapter(new FragmentStateAdapter(this_Context) {
             @NonNull
             @Override
@@ -144,8 +146,8 @@ public class Utilws {
         }).attach();
     }
 
-    public PopupWindow popupWindowWs(View inflate){
-        PopupWindow popupWindow = new PopupWindow(inflate, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,true);
+    public PopupWindow popupWindowWs(View inflate) {
+        PopupWindow popupWindow = new PopupWindow(inflate, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setOutsideTouchable(true);
         return popupWindow;
     }
@@ -153,19 +155,21 @@ public class Utilws {
     //String s = "android.resource://" + getPackageName() + "/raw/s3";
     //  /storage/emulated/0/博雅东湖.mp4
     // /storage/emulated/0/Pictures/s1.mp4
-    public VideoView videoViewWs(VideoView videoView,String pathVideo){
+    public VideoView videoViewWs(VideoView videoView, String pathVideo) {
         videoView.setVideoPath(pathVideo);
         MediaController mediaController = new MediaController(context);
         videoView.setMediaController(mediaController);
         return videoView;
     }
-    public VideoView videoViewWs(VideoView videoView){
+
+    public VideoView videoViewWs(VideoView videoView) {
         videoView.setVideoPath("/storage/emulated/0/Pictures/s1.mp4");
         MediaController mediaController = new MediaController(context);
         videoView.setMediaController(mediaController);
         return videoView;
     }
-    public void notificationWs(String title,String desc,int icon,Intent intent){
+
+    public void notificationWs(String title, String desc, int icon, Intent intent) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel("id", "name", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager systemService = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -180,35 +184,43 @@ public class Utilws {
                 .setAutoCancel(true)
                 .build();
         NotificationManagerCompat from = NotificationManagerCompat.from(context);
-        from.notify(11,id);
+        from.notify(11, id);
 
     }
 
-    public void callPhone(int phone){
+    public void callPhone(int phone) {
         //Manifest.permission.CALL_PHONE
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
         this.context.startActivity(intent);
     }
 
-    public ArrayList<TelBean> getLianXiRen(){
+
+    /**
+     * Use dangerous permissions before using
+     * <uses-permission android:name="android.permission.READ_CONTACTS" />
+     * <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+     * Manifest.permission.READ_CONTACTS
+     * Manifest.permission.WRITE_CONTACTS
+     */
+    public ArrayList<TelBean> getLianXiRen() {
         ArrayList<TelBean> telBeans = new ArrayList<>();
         ContentResolver contentResolver = context.getContentResolver();
         String[] PROJECTION = {ContactsContract.Contacts.DISPLAY_NAME,
-                                ContactsContract.Contacts.HAS_PHONE_NUMBER,
-                                ContactsContract.Contacts._ID};
+                ContactsContract.Contacts.HAS_PHONE_NUMBER,
+                ContactsContract.Contacts._ID};
         Cursor phoneCursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, PROJECTION, null, null, null);
 
-        if (phoneCursor != null){
-            while (phoneCursor.moveToNext()){
+        if (phoneCursor != null) {
+            while (phoneCursor.moveToNext()) {
                 TelBean telBean = new TelBean();
                 String telDisplayName = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
                 telBean.setName(telDisplayName);
                 int hasTelNumber = phoneCursor.getInt(phoneCursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
                 String contactId = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.Contacts._ID));
-                if (!TextUtils.isEmpty(telDisplayName)&&hasTelNumber == 1){
-                    Cursor phoneNumber = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + contactId, null, null);
-                    if (phoneNumber != null){
-                        while (phoneNumber.moveToNext()){
+                if (!TextUtils.isEmpty(telDisplayName) && hasTelNumber == 1) {
+                    Cursor phoneNumber = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + contactId, null, null);
+                    if (phoneNumber != null) {
+                        while (phoneNumber.moveToNext()) {
                             String telNumber = phoneNumber.getString(phoneNumber.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
                             telBean.setName(telNumber);
                             telBeans.add(telBean);
@@ -221,11 +233,6 @@ public class Utilws {
         }
         return null;
     }
-
-
-
-
-
 
 
 }
