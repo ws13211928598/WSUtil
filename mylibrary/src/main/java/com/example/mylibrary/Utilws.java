@@ -106,6 +106,32 @@ public class Utilws {
             }
         }).attach();
     }
+    public void viewpager2Ws(FragmentActivity this_Context,
+                             ViewPager2 viewPager2,
+                             TabLayout tabLayout,
+                             ArrayList<Fragment> fragments,
+                             ArrayList<String> tabItem,
+                             IViewpager2ws iViewpager2ws) {
+        viewPager2.setAdapter(new FragmentStateAdapter(this_Context) {
+            @NonNull
+            @Override
+            public Fragment createFragment(int position) {
+                return fragments.get(position);
+            }
+
+            @Override
+            public int getItemCount() {
+                return fragments.size();
+            }
+        });
+        new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText(tabItem.get(position));
+                iViewpager2ws.setTabIcon(tab);
+            }
+        }).attach();
+    }
 
     /**
      * CustomReceiver1 customReceiver1 = new CustomReceiver1();
