@@ -16,6 +16,10 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
  * describe:
  */
 public class WsUpLoading {
+
+    /**
+     * https://www.liulongbin.top:8888/api/private/v1/upload
+     * authorization*/
     private static final String TAG = "asd";
     /**Gets MultiPartBody.part. Provides the file save path
      *              /storage/emulated/0/xxx.jpg(xxx.apk)
