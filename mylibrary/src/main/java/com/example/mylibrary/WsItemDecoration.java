@@ -109,8 +109,8 @@ public class WsItemDecoration extends RecyclerView.ItemDecoration {
 
                 int topH = childAt.getTop()-widthHorizontal;
                 int bottomH = childAt.getTop();
-                int leftH = childAt.getLeft()-widthHorizontal;
-                int rightH = childAt.getRight()+widthHorizontal;
+                int leftH = childAt.getLeft();
+                int rightH = childAt.getRight();
                 c.drawRect(leftH,topH,rightH,bottomH,paintHorizontal);
 
             }else {
