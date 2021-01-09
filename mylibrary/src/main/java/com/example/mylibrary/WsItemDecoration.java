@@ -123,7 +123,7 @@ public class WsItemDecoration extends RecyclerView.ItemDecoration {
 
                 int topV = childAt.getTop();
                 int bottomV = childAt.getBottom();
-                int leftV = childAt.getLeft()-widthVertical;
+                int leftV = childAt.getLeft()-widthHorizontal;
                 int rightV = childAt.getRight()+widthHorizontal;
                 c.drawRect(leftV,topV,rightV,bottomV,paintVertical);
 
