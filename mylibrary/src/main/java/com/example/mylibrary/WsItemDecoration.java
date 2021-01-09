@@ -60,7 +60,6 @@ public class WsItemDecoration extends RecyclerView.ItemDecoration {
         return this;
     }
 
-
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
@@ -110,8 +109,8 @@ public class WsItemDecoration extends RecyclerView.ItemDecoration {
 
                 int topH = childAt.getTop()-widthHorizontal;
                 int bottomH = childAt.getTop();
-                int leftH = childAt.getLeft();
-                int rightH = childAt.getRight();
+                int leftH = childAt.getLeft()-widthHorizontal;
+                int rightH = childAt.getRight()+widthHorizontal;
                 c.drawRect(leftH,topH,rightH,bottomH,paintHorizontal);
 
             }else {
@@ -151,7 +150,7 @@ public class WsItemDecoration extends RecyclerView.ItemDecoration {
             View childAt = parent.getChildAt(i);
             int top = childAt.getTop();
             int bottom = childAt.getBottom();
-            int left = childAt.getLeft()-widthVertical;
+            int left = childAt.getLeft()-widthHorizontal;
             int right = childAt.getRight()+widthHorizontal;
             c.drawRect(left,top,right,bottom,paintVertical);
         }
