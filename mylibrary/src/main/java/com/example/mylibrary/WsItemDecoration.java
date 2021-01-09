@@ -21,6 +21,7 @@ public class WsItemDecoration extends RecyclerView.ItemDecoration {
     int mode = 0;
     boolean fistHorizontal;
 
+    Context context;
     Paint paintVertical = new Paint();
 
     int colorVertical = Color.BLACK;
@@ -30,16 +31,19 @@ public class WsItemDecoration extends RecyclerView.ItemDecoration {
     int colorHorizontal = Color.BLACK;
     int widthHorizontal = 1;
 
+    public WsItemDecoration(Context context) {
+        this.context = context;
+    }
 
-    public WsItemDecoration setPaintHorizontal(int widthHorizontal,String color){
+    public WsItemDecoration setPaintHorizontal(int widthHorizontal, int color){
         this.widthHorizontal = widthHorizontal;
-        colorHorizontal = Color.parseColor(color);
+        colorHorizontal = context.getResources().getColor(color);
         return this;
     }
 
-    public WsItemDecoration setPaintVertical(int widthVertical,String color){
+    public WsItemDecoration setPaintVertical(int widthVertical,int color){
         this.widthVertical = widthVertical;
-        colorVertical = Color.parseColor(color);
+        colorVertical = context.getResources().getColor(color);
         return this;
     }
 
