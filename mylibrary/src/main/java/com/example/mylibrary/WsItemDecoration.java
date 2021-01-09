@@ -38,12 +38,14 @@ public class WsItemDecoration extends RecyclerView.ItemDecoration {
     public WsItemDecoration setPaintHorizontal(int widthHorizontal, int color){
         this.widthHorizontal = widthHorizontal;
         colorHorizontal = context.getResources().getColor(color);
+        paintHorizontal.setColor(colorHorizontal);
         return this;
     }
 
     public WsItemDecoration setPaintVertical(int widthVertical,int color){
         this.widthVertical = widthVertical;
         colorVertical = context.getResources().getColor(color);
+        paintVertical.setColor(colorVertical);
         return this;
     }
 
