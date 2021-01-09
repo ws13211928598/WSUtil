@@ -54,6 +54,11 @@ public class WsItemDecoration extends RecyclerView.ItemDecoration {
         return this;
     }
 
+    public WsItemDecoration setMode(int f0_2){
+        this.mode = f0_2;
+        return this;
+    }
+
 
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
