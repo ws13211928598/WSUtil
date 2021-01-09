@@ -54,6 +54,7 @@ public class WsItemDecoration extends RecyclerView.ItemDecoration {
         return this;
     }
 
+    //设置模式,默认为0
     public WsItemDecoration setMode(int f0_2){
         this.mode = f0_2;
         return this;
