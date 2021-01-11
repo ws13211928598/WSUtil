@@ -10,7 +10,8 @@ import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.utils.R;
+
+import com.example.mylibrary.R;
 
 import java.lang.ref.WeakReference;
 

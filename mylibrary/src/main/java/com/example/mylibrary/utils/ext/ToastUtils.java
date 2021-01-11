@@ -5,7 +5,8 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import com.example.utils.StaticToast;
+import com.example.mylibrary.utils.StaticToast;
+
 
 /**
  * ToastUtils
@@ -53,13 +54,13 @@ public class ToastUtils {
 
     public static void show(Context context, CharSequence text, int duration) {
     	if(!TextUtils.isEmpty(text)){
-            com.example.utils.StaticToast.showShortToast(context,text);
+            StaticToast.showShortToast(context,text);
     	}
     }
 
     public static void showInMiddle(Context context, CharSequence text) {
         if(!TextUtils.isEmpty(text)){
-            com.example.utils.StaticToast.showShortToast(context,text, Gravity.CENTER_VERTICAL);
+           StaticToast.showShortToast(context,text, Gravity.CENTER_VERTICAL);
         }
     }
 }

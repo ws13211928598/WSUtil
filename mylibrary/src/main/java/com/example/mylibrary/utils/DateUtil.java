@@ -301,7 +301,7 @@ public class DateUtil {
      */
     public static String dateAddDay(String currentTimeMillis, int days,
                                     SimpleDateFormat simpFormat) {
-        Date dateAddDay = com.example.utils.DateUtil.dateAddDay(
+        Date dateAddDay = DateUtil.dateAddDay(
                 new Date(Long.parseLong(currentTimeMillis)), days);
         return simpFormat.format(dateAddDay);
 
@@ -313,7 +313,7 @@ public class DateUtil {
      * @return 返回 1月2号 去掉两位数 前面的“0”
      */
     public static String dateAddDay(String currentTimeMillis, int days) {
-        Date dateAddDay = com.example.utils.DateUtil.dateAddDay(
+        Date dateAddDay = DateUtil.dateAddDay(
                 new Date(Long.parseLong(currentTimeMillis)), days);
         return formatModel9.format(dateAddDay);
 
@@ -490,7 +490,7 @@ public class DateUtil {
      * 上面函数的String版本
      **/
     public static int daysBetween(String pFurtherDayStr) {
-        GregorianCalendar vFurtherDay = com.example.utils.DateUtil.parse2Cal(pFurtherDayStr);
+        GregorianCalendar vFurtherDay = DateUtil.parse2Cal(pFurtherDayStr);
         GregorianCalendar vToday = new GregorianCalendar();
         return daysBetween(vToday, vFurtherDay);
     }
@@ -499,8 +499,8 @@ public class DateUtil {
      * 返回较晚的时间(latter)与较早的时间(former)所差的天数
      **/
     public static int daysBetween(String pFormerStr, String pLatterStr) {
-        GregorianCalendar pFormer = com.example.utils.DateUtil.parse2Cal(pFormerStr);
-        GregorianCalendar pLatter = com.example.utils.DateUtil.parse2Cal(pLatterStr);
+        GregorianCalendar pFormer = DateUtil.parse2Cal(pFormerStr);
+        GregorianCalendar pLatter = DateUtil.parse2Cal(pLatterStr);
         return daysBetween(pFormer, pLatter);
     }
 
@@ -558,7 +558,7 @@ public class DateUtil {
      **/
     public static int monthsBetween(String pFurtherMonth) {
         GregorianCalendar vToday = new GregorianCalendar();
-        GregorianCalendar vFurtherMonth = com.example.utils.DateUtil.parse2Cal(pFurtherMonth);
+        GregorianCalendar vFurtherMonth = DateUtil.parse2Cal(pFurtherMonth);
         return monthsBetween(vToday, vFurtherMonth);
     }
 
@@ -566,8 +566,8 @@ public class DateUtil {
      * 给定两个时间相差的月份,String版
      **/
     public static int monthsBetween(String pFormerStr, String pLatterStr) {
-        GregorianCalendar vFormer = com.example.utils.DateUtil.parse2Cal(pFormerStr);
-        GregorianCalendar vLatter = com.example.utils.DateUtil.parse2Cal(pLatterStr);
+        GregorianCalendar vFormer = DateUtil.parse2Cal(pFormerStr);
+        GregorianCalendar vLatter = DateUtil.parse2Cal(pLatterStr);
         return monthsBetween(vFormer, vLatter);
     }
 

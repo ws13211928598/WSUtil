@@ -324,7 +324,7 @@ public class LogUtil {
         String caller = "<unknown>";
         for (int i = 2; i < trace.length; i++) {
             Class<?> clazz = trace[i].getClass();
-            if (!clazz.equals(com.example.utils.LogUtil.class)) {
+            if (!clazz.equals(LogUtil.class)) {
                 String callingClass = trace[i].getClassName();
                 callingClass = callingClass.substring(callingClass.lastIndexOf('.') + 1);
                 callingClass = callingClass.substring(callingClass.lastIndexOf('$') + 1);

@@ -13,7 +13,9 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.example.utils.R;
+import com.example.mylibrary.R;
+import com.example.mylibrary.utils.UtilsApplication;
+
 
 
 /**
@@ -24,7 +26,7 @@ public class GlideUtil {
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .dontAnimate();
-        Glide.with(com.example.utils.UtilsApplication.getUtilsApplicationContext())
+        Glide.with(UtilsApplication.getUtilsApplicationContext())
                 .load(filePath)
                 .apply(options)
                 .into(imageView);
@@ -47,12 +49,12 @@ public class GlideUtil {
      * @param radius
      */
     public static void loadCornerImage(ImageView imageView, String filePath, RequestListener listener, float radius) {
-        CornerTransform transform = new CornerTransform(com.example.utils.UtilsApplication.getUtilsApplicationContext(), radius);
+        CornerTransform transform = new CornerTransform(UtilsApplication.getUtilsApplicationContext(), radius);
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .dontAnimate()
                 .transform(transform);
-        Glide.with(com.example.utils.UtilsApplication.getUtilsApplicationContext())
+        Glide.with(UtilsApplication.getUtilsApplicationContext())
                 .load(filePath)
                 .apply(options)
                 .listener(listener)
@@ -60,7 +62,7 @@ public class GlideUtil {
     }
 
     public static void loadRoundImage(ImageView pImageView, String filePath) {
-        Glide.with(com.example.utils.UtilsApplication.getUtilsApplicationContext()).load(filePath)
+        Glide.with(UtilsApplication.getUtilsApplicationContext()).load(filePath)
                 .apply(RequestOptions.bitmapTransform(new CircleCrop()))
                 .into(pImageView);
     }
@@ -69,7 +71,7 @@ public class GlideUtil {
      * 设置背景模糊，失败时使用默认图片
      */
     public static void loadBlurredBackground(String imagePath, final ImageView imageView) {
-        Glide.with(com.example.utils.UtilsApplication.getUtilsApplicationContext()).load(imagePath)
+        Glide.with(UtilsApplication.getUtilsApplicationContext()).load(imagePath)
                 .apply(RequestOptions.bitmapTransform(new BlurTransformation(20, 3)))
                 .listener(new RequestListener<Drawable>() {
                     @Override
@@ -77,7 +79,7 @@ public class GlideUtil {
                         imageView.post(new Runnable() {
                             @Override
                             public void run() {
-                                Glide.with(com.example.utils.UtilsApplication.getUtilsApplicationContext()).load(R.drawable.ic_pic_load)
+                                Glide.with(UtilsApplication.getUtilsApplicationContext()).load(R.drawable.ic_pic_load)
                                         .apply(RequestOptions.bitmapTransform(new BlurTransformation(20, 3)))
                                         .into(imageView);
                             }

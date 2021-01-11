@@ -75,7 +75,7 @@ public class ImageUtil {
 			// 获取资源图片
 			bitmap = BitmapFactory.decodeStream(is, null, null);
 		} catch (Exception e) {
-			LogUtil.d(com.example.utils.ImageUtil.class, "" + e.getMessage());
+			LogUtil.d(ImageUtil.class, "" + e.getMessage());
 		} finally {
 			try {
 				if (is != null) {
@@ -133,7 +133,7 @@ public class ImageUtil {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			LogUtil.d(com.example.utils.ImageUtil.class, "" + e.getMessage());
+			LogUtil.d(ImageUtil.class, "" + e.getMessage());
 		} finally {
 			try {
 				if (is != null) {
@@ -156,11 +156,11 @@ public class ImageUtil {
 	public static Bitmap getBitmap(InputStream inputStream,int desiredWidth, int desiredHeight) {
 		Bitmap bitmap = null;
 		try {
-			byte [] data = com.example.utils.StreamUtil.stream2bytes(inputStream);
+			byte [] data = StreamUtil.stream2bytes(inputStream);
 			bitmap = getBitmap(data,desiredWidth,desiredHeight);
 		} catch (Exception e) {
 			e.printStackTrace();
-			LogUtil.d(com.example.utils.ImageUtil.class, "" + e.getMessage());
+			LogUtil.d(ImageUtil.class, "" + e.getMessage());
 		}finally {
 			try {
 				if (inputStream != null) {
@@ -218,7 +218,7 @@ public class ImageUtil {
 		
 		} catch (Exception e) {
 			e.printStackTrace();
-			LogUtil.d(com.example.utils.ImageUtil.class, "" + e.getMessage());
+			LogUtil.d(ImageUtil.class, "" + e.getMessage());
 		}
 		return resizeBmp;
 	}
@@ -541,12 +541,12 @@ public class ImageUtil {
 
 	private static boolean checkBitmap(Bitmap bitmap) {
 		if (bitmap == null) {
-			LogUtil.e(com.example.utils.ImageUtil.class, "原图Bitmap为空了");
+			LogUtil.e( ImageUtil.class, "原图Bitmap为空了");
 			return false;
 		}
 
 		if (bitmap.getWidth() <= 0 || bitmap.getHeight() <= 0) {
-			LogUtil.e(com.example.utils.ImageUtil.class, "原图Bitmap大小为0");
+			LogUtil.e( ImageUtil.class, "原图Bitmap大小为0");
 			return false;
 		}
 		return true;
@@ -554,7 +554,7 @@ public class ImageUtil {
 
 	private static boolean checkSize(int desiredWidth, int desiredHeight) {
 		if (desiredWidth <= 0 || desiredHeight <= 0) {
-			LogUtil.e(com.example.utils.ImageUtil.class, "请求Bitmap的宽高参数必须大于0");
+			LogUtil.e( ImageUtil.class, "请求Bitmap的宽高参数必须大于0");
 			return false;
 		}
 		return true;
@@ -812,8 +812,8 @@ public class ImageUtil {
 			Bitmap.CompressFormat compressFormat) {
 		byte[] b = null;
 		try {
-			Bitmap bitmap = com.example.utils.ImageUtil.view2Bitmap(view);
-			b = com.example.utils.ImageUtil.bitmap2Bytes(bitmap, compressFormat, true);
+			Bitmap bitmap =  ImageUtil.view2Bitmap(view);
+			b =  ImageUtil.bitmap2Bytes(bitmap, compressFormat, true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -1061,7 +1061,7 @@ public class ImageUtil {
 		if (bitmap != null) {
 			try {
 				if (!bitmap.isRecycled()) {
-					LogUtil.d(com.example.utils.ImageUtil.class,
+					LogUtil.d( ImageUtil.class,
 							"Bitmap释放" + bitmap.toString());
 					bitmap.recycle();
 				}
@@ -1082,7 +1082,7 @@ public class ImageUtil {
 			try {
 				for (Bitmap bitmap : bitmaps) {
 					if (bitmap != null && !bitmap.isRecycled()) {
-						LogUtil.d(com.example.utils.ImageUtil.class,
+						LogUtil.d( ImageUtil.class,
 								"Bitmap释放" + bitmap.toString());
 						bitmap.recycle();
 					}

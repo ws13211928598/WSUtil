@@ -4,17 +4,18 @@ import android.text.TextUtils;
 
 import java.util.regex.Pattern;
 
-import static com.example.utils.ext.ConstUtils.REGEX_CHZ;
-import static com.example.utils.ext.ConstUtils.REGEX_DATE;
-import static com.example.utils.ext.ConstUtils.REGEX_EMAIL;
-import static com.example.utils.ext.ConstUtils.REGEX_IDCARD15;
-import static com.example.utils.ext.ConstUtils.REGEX_IDCARD18;
-import static com.example.utils.ext.ConstUtils.REGEX_IP;
-import static com.example.utils.ext.ConstUtils.REGEX_MOBILE_EXACT;
-import static com.example.utils.ext.ConstUtils.REGEX_MOBILE_SIMPLE;
-import static com.example.utils.ext.ConstUtils.REGEX_TEL;
-import static com.example.utils.ext.ConstUtils.REGEX_URL;
-import static com.example.utils.ext.ConstUtils.REGEX_USERNAME;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_CHZ;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_DATE;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_EMAIL;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_IDCARD15;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_IDCARD18;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_IP;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_MOBILE_EXACT;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_MOBILE_SIMPLE;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_TEL;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_URL;
+import static com.example.mylibrary.utils.ext.ConstUtils.REGEX_USERNAME;
+
 
 /**
  * <pre>

@@ -24,7 +24,7 @@ import java.io.IOException;
 
 public class BitmapUtil {
 
-    private static final String TAG = com.example.utils.BitmapUtil.class.getSimpleName();
+    private static final String TAG = BitmapUtil.class.getSimpleName();
 
     /**
      * convert Bitmap to byte array

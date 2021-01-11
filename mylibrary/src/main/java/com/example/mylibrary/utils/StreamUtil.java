@@ -183,7 +183,7 @@ public class StreamUtil {
      */
 	public static String readString(InputStream is) throws IOException {
         int n = (int) readLong(is);
-        byte[] b = com.example.utils.StreamUtil.stream2Bytes(is, n);
+        byte[] b = StreamUtil.stream2Bytes(is, n);
         return new String(b, "UTF-8");
     }
 

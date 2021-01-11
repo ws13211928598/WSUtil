@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
  */
 public class FileUtil {
 
-    private static final String TAG = com.example.utils.FileUtil.class.getSimpleName();
+    private static final String TAG = FileUtil.class.getSimpleName();
 
     public static void fileChannelCopy(File s, File t) {
         FileInputStream fi = null;

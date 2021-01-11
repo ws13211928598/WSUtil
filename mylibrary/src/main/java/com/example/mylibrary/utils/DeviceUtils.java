@@ -6,7 +6,8 @@ import android.location.LocationManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
-import com.example.utils.ext.MyDisplayMetrics;
+
+import com.example.mylibrary.utils.ext.MyDisplayMetrics;
 
 import java.util.UUID;
 

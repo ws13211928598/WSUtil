@@ -33,7 +33,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.utils.R;
+import com.example.mylibrary.R;
 
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;

@@ -9,7 +9,7 @@ import androidx.multidex.MultiDexApplication;
  * Created by 任小龙 on 2020/6/2.
  */
 public class UtilsApplication extends MultiDexApplication {
-    private static com.example.utils.UtilsApplication mApplication;
+    private static UtilsApplication mApplication;
 
     @Override
     public void onCreate() {
