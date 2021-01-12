@@ -15,8 +15,8 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
  * describe:
  */
 public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseActivity implements ICommonViewWs {
-    M m;
-    private ICommonPresenterWs commonPresenterWs;
+    public M m;
+    public ICommonPresenterWs commonPresenterWs;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

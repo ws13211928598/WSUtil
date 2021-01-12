@@ -19,8 +19,8 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
  */
 public  abstract class WsBaseFragment<M extends ICommonModelWs> extends BaseFragment implements ICommonViewWs{
 
-    private M m;
-    private ICommonPresenterWs presenterWs;
+    public M m;
+    public ICommonPresenterWs presenterWs;
 
     @Nullable
     @Override
