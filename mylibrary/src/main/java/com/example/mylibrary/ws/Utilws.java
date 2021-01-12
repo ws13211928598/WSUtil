@@ -1,10 +1,7 @@
-package com.example.mylibrary;
+package com.example.mylibrary.ws;
 
-import android.Manifest;
 import android.app.Activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -14,12 +11,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.ContactsContract;
-import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.MediaController;
@@ -31,7 +24,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.FileProvider;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.fragment.app.Fragment;
@@ -42,13 +34,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.channels.Selector;
 import java.util.ArrayList;
-
-import okhttp3.MultipartBody;
 
 
 /**

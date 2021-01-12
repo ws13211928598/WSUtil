@@ -1,4 +1,4 @@
-package com.example.mylibrary;
+package com.example.mylibrary.ws;
 
 import android.content.Context;
 import android.os.Looper;

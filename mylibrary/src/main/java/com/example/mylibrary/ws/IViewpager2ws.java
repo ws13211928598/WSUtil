@@ -1,4 +1,4 @@
-package com.example.mylibrary;
+package com.example.mylibrary.ws;
 
 import com.google.android.material.tabs.TabLayout;
 

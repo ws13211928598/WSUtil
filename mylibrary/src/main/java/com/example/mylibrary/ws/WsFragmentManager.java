@@ -1,4 +1,4 @@
-package com.example.mylibrary;
+package com.example.mylibrary.ws;
 
 import android.app.Activity;
 import android.app.Fragment;
