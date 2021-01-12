@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class WsNetManager {
     private static WsNetManager wsNetManager;
-    public static Retrofit retrofit;
+    public  Retrofit retrofit;
     public  String url ;
 
     private WsNetManager(){}
@@ -40,7 +40,7 @@ public class WsNetManager {
         return build;
     }
 
-    public <W> void newtWork(Flowable<W> info,ICommonPresenterWs iCommonPresenterWs,int mode){
+    public <W> void newtWork(Flowable<W> info,ICommonPresenterWs iCommonPresenterWs,int mode,Object[] objects){
         ResourceSubscriber<W> resourceSubscriber = info.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new ResourceSubscriber<W>() {
