@@ -18,6 +18,8 @@ public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseAc
     public M m;
     public ICommonPresenterWs commonPresenterWs;
 
+    /**初始化M层必须自己新建model,继承ICommonModelWs
+     * 初始化P层根据需要自己新建或使用默认WsMvpPresenter,要使用默认就不用管initPresenter*/
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,23 +39,6 @@ public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseAc
     protected abstract ICommonPresenterWs initPresenter();
 
 
-    @Override
-    public void initSmartLoad(SmartRefreshLayout smartRefreshLayout, int mode, Object[] objects) {
-        smartRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                onSuccess(mode,objects);
-                smartRefreshLayout.finishLoadMore(2000);
-
-            }
-
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                onSuccess(mode,objects);
-                smartRefreshLayout.finishRefresh(2000);
-            }
-            });
-    }
 
     protected abstract M initModel();
     protected abstract int initLayout();

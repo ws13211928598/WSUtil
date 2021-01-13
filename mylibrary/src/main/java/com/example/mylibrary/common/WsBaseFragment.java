@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -21,14 +22,18 @@ public  abstract class WsBaseFragment<M extends ICommonModelWs> extends BaseFrag
 
     public M m;
     public ICommonPresenterWs presenterWs;
+    private FragmentActivity activity;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(setLayout(), container, false);
+        activity = getActivity();
         return inflate;
     }
 
+    /**初始化M层必须自己新建model,继承ICommonModelWs
+     * 初始化P层根据需要自己新建或使用默认WsMvpPresenter,要使用默认就不用管initPresenter*/
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -50,21 +55,5 @@ public  abstract class WsBaseFragment<M extends ICommonModelWs> extends BaseFrag
 
     protected abstract int setLayout();
 
-    @Override
-    public void initSmartLoad(SmartRefreshLayout smartRefreshLayout, int mode, Object[] objects) {
-        smartRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                onSuccess(mode,objects);
-                smartRefreshLayout.finishLoadMore(2000);
 
-            }
-
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                onSuccess(mode,objects);
-                smartRefreshLayout.finishRefresh(2000);
-            }
-        });
-    }
 }

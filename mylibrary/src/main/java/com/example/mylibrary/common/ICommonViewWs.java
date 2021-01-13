@@ -11,7 +11,5 @@ public interface ICommonViewWs<W> {
     void onSuccess(int mode,W...ws);
     void onFailed(Throwable throwable);
 
-    default void initSmartLoad(SmartRefreshLayout smartRefreshLayout,int mode,W...ws) {
 
-    }
 }
