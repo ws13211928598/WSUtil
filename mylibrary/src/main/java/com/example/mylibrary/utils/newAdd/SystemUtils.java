@@ -77,10 +77,10 @@ public class SystemUtils {
         }
         //如果Mac地址为空或者为默认值,6.0之上mac会获取默认值
         if (TextUtils.isEmpty(deviceId) || deviceId.equals("02:00:00:00:00:00")) {
-            deviceId = SharedPrefrenceUtils.getString(context, "deviceId");
+            deviceId = SharedPreferenceUtils.getString(context, "deviceId");
             if (TextUtils.isEmpty(deviceId)) {
                 deviceId = UUID.randomUUID().toString();
-                SharedPrefrenceUtils.saveString(context, "deviceId", deviceId);
+                SharedPreferenceUtils.saveString(context, "deviceId", deviceId);
             }
         }
         return deviceId;

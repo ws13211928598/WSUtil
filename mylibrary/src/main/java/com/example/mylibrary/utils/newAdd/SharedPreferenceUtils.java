@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by 任小龙 on 2016/6/13.
  */
-public class SharedPrefrenceUtils {
+public class SharedPreferenceUtils {
     private static SharedPreferences sp;
 
     public static void saveBoolean(Context context, String key, boolean value) {
