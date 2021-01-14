@@ -34,7 +34,7 @@ public class WsNetManager {
     }
 
     /**获取Retrofit对象,后需要手动.create和.getXxx方法,得到Flowable对象,调用netWork方法并传入*/
-    private  Retrofit initRetrofit() {
+    public   Retrofit initRetrofit() {
         Retrofit build = new Retrofit.Builder()
                 .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())

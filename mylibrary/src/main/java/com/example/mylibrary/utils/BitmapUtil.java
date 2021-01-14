@@ -48,6 +48,13 @@ public class BitmapUtil {
     public static String bitmapToString(Bitmap bitmap) {
         return Base64.encodeToString(bitmapToByte(bitmap), Base64.DEFAULT);
     }
+    /**
+     * 把64编码的string转换成String*/
+
+    public static byte[] stringToBitmap(String string) {
+        return Base64.decode(string, Base64.DEFAULT);
+    }
+
 
     /**
      * convert Drawable to Bitmap

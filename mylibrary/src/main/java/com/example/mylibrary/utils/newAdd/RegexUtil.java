@@ -17,6 +17,13 @@ public class RegexUtil {
         Matcher m = p.matcher(name);
         return m.matches();
     }
+    public static boolean checkPassword(String password) {
+        //字母+数字。最少6位的正则表达式
+        Pattern p = Pattern.compile("(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}");
+        Matcher m = p.matcher(password);
+        boolean isPassword = m.matches();
+        return isPassword;
+    }
     public static boolean checkTwicePwd(Activity activity, String password, String username,
                                        String oldPassword, String surePwd) {
         //password = et_password.getText().toString();
