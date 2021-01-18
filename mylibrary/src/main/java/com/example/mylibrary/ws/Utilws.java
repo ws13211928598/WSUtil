@@ -34,7 +34,12 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 
 /**
@@ -268,6 +273,11 @@ public class Utilws {
             }
         }
         return null;
+    }
+
+    public RequestBody getJsonRequestBody(JSONObject json){
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString());
+        return requestBody;
     }
 
 
