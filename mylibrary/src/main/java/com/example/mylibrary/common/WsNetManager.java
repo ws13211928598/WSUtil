@@ -1,9 +1,16 @@
 package com.example.mylibrary.common;
 
+import com.example.mylibrary.ws.SuperInterceptor;
+
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Flowable;
+
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.ResourceSubscriber;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -39,6 +46,26 @@ public class WsNetManager {
                 .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+
+        return build;
+    }
+
+
+    /*public static OkHttpClient initClient = new OkHttpClient().newBuilder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10,TimeUnit.SECONDS)
+            .addInterceptor(new CommonHeaderInterceptor())
+            .addInterceptor(new LogInterceptor())
+            .proxySelector(new ProxySelector())
+            .build();*/
+    public   Retrofit initRetrofit(OkHttpClient okHttpClient) {
+        Retrofit build = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient)
+                .client(new OkHttpClient.Builder().addInterceptor(new SuperInterceptor()).build())
                 .build();
 
         return build;

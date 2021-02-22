@@ -20,7 +20,7 @@ public class SuperInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
         Response proceed = chain.proceed(request);
-        String string = proceed.peekBody(1024).string();
+        String string = proceed.peekBody(Long.MAX_VALUE).string();
         Log.d(TAG, "intercept: "+string);
 
         return proceed;
