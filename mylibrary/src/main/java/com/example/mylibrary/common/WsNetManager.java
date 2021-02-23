@@ -59,6 +59,7 @@ public class WsNetManager {
             .addInterceptor(new LogInterceptor())
             .proxySelector(new ProxySelector())
             .build();*/
+    //asd
     public   Retrofit initRetrofit(OkHttpClient okHttpClient) {
         Retrofit build = new Retrofit.Builder()
                 .baseUrl(url)
