@@ -70,7 +70,7 @@ public class SharedPreferenceUtils {
      * @param obj     要保存的对象（Serializable的子类）
      * @param <T>     泛型定义
      */
-    public static <T extends Serializable> void putObject(Context context, String key, T obj) {
+    public static <T extends Serializable> void saveObject(Context context, String key, T obj) {
         try {
             put(context, key, obj);
         } catch (Exception e) {
