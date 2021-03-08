@@ -33,7 +33,7 @@ public  abstract class WsBaseFragment<M extends ICommonModelWs> extends BaseFrag
     }
 
     /**初始化M层必须自己新建model,继承ICommonModelWs
-     * 初始化P层根据需要自己新建或使用默认WsMvpPresenter,要使用默认就不用管initPresenter*/
+     * 初始化P层根据需要自己新建或使用默认WsMvpPresenter,要使用默认就不用管initPresenter...*/
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
