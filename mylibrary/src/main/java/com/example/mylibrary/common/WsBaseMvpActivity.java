@@ -29,7 +29,7 @@ public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseAc
         if (presenterWs != null ){
             commonPresenterWs = presenterWs;
         }else {
-            commonPresenterWs = new WsMvpPresenter(this, this.m);
+            commonPresenterWs = WsMvpPresenter.getWsMvpPresenter(this, this.m);
         }
         initView();
         initData();

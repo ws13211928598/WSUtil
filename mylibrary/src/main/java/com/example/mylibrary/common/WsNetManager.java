@@ -23,7 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class WsNetManager {
     private static WsNetManager wsNetManager;
     public  Retrofit retrofit;
-    public  String url ;
 
     private WsNetManager(){}
 
@@ -40,12 +39,15 @@ public class WsNetManager {
         return wsNetManager;
     }
 
+
+
     /**获取Retrofit对象,后需要手动.create和.getXxx方法,得到Flowable对象,调用netWork方法并传入*/
-    public   Retrofit initRetrofit() {
+    public   Retrofit initRetrofit(String baseUrl) {
         Retrofit build = new Retrofit.Builder()
-                .baseUrl(url)
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(new OkHttpClient.Builder().addInterceptor(new SuperInterceptor()).build())
                 .build();
 
         return build;
@@ -59,10 +61,10 @@ public class WsNetManager {
             .addInterceptor(new LogInterceptor())
             .proxySelector(new ProxySelector())
             .build();*/
-    //asd
-    public   Retrofit initRetrofit(OkHttpClient okHttpClient) {
+    //添加拦截器版本的
+    public   Retrofit initRetrofit(String baseUrl,OkHttpClient okHttpClient) {
         Retrofit build = new Retrofit.Builder()
-                .baseUrl(url)
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
@@ -70,6 +72,16 @@ public class WsNetManager {
                 .build();
 
         return build;
+    }
+
+    //手动添加任意数量的拦截器,添加完后需要.build
+    public   Retrofit.Builder addMoreInterceptor(String baseUrl) {
+        Retrofit.Builder client = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
+
+        return client;
     }
 
     /**传入Flowable对象,模式,数据*/

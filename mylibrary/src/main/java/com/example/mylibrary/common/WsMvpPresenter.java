@@ -7,12 +7,17 @@ package com.example.mylibrary.common;
  */
 public class WsMvpPresenter implements ICommonPresenterWs{
 
-    private final ICommonModelWs commonModelWs;
-    private final ICommonViewWs commonViewWs;
+    private  static ICommonModelWs commonModelWs;
+    private  static ICommonViewWs commonViewWs;
+    public static WsMvpPresenter wsMvpPresenter;
+    private  <M extends ICommonModelWs> WsMvpPresenter() {
 
-    public <M extends ICommonModelWs> WsMvpPresenter(ICommonViewWs viewWs, ICommonModelWs m) {
+    }
+    public static WsMvpPresenter getWsMvpPresenter(ICommonViewWs viewWs, ICommonModelWs m){
+        if (wsMvpPresenter==null) wsMvpPresenter = new WsMvpPresenter();
         commonViewWs = viewWs;
         commonModelWs = m;
+        return wsMvpPresenter;
 
     }
 

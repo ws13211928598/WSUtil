@@ -62,6 +62,26 @@ public class SharedPreferenceUtils {
         return sp.getString(key, "");
     }
 
+    public static void saveInt(Context context, String key, int defValue) {
+        if (sp == null) {
+            sp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
+        }
+        sp.edit().putInt(key,defValue).commit();
+    }
+
+    public static Integer getInt(Context context,String key){
+        if (sp == null) {
+            sp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
+        }
+        return sp.getInt(key,-1);
+    }
+    public static Integer getInt(Context context,String key,int defValue){
+        if (sp == null) {
+            sp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
+        }
+        return sp.getInt(key,defValue);
+    }
+
     /**
      * 保存对象
      *
