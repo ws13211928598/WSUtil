@@ -2,7 +2,7 @@ package com.example.mylibrary.common;
 
 import com.example.mylibrary.ws.SuperInterceptor;
 
-import java.util.concurrent.TimeUnit;
+
 
 import io.reactivex.Flowable;
 
@@ -22,7 +22,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class WsNetManager {
     private static WsNetManager wsNetManager;
-    public  Retrofit retrofit;
 
     private WsNetManager(){}
 
@@ -85,7 +84,7 @@ public class WsNetManager {
         return client;
     }
 
-    /**传入Flowable对象,模式,数据*/
+    /**传入Flowable对象,模式,数据...*/
     public <W> void newtWork(Flowable<W> info,ICommonPresenterWs iCommonPresenterWs,int mode,Object[] objects){
         ResourceSubscriber<W> resourceSubscriber = info.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
