@@ -30,6 +30,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.dcendents:android-maven-gradle-plugin:2.0'
     apply plugin: 'com.github.dcendents.android-maven'
     group = 'com.github.ws13211928598 '
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-28'
