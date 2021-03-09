@@ -6,5 +6,5 @@ package com.example.mylibrary.common;
  * describe:
  */
 public interface ICommonPresenterWs<W>extends ICommonViewWs {
-    void getData(int mode,W...ws);
+    void getData(int mode,int users,W...ws);
 }

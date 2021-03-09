@@ -17,19 +17,23 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseActivity implements ICommonViewWs {
     public M m;
     public ICommonPresenterWs commonPresenterWs;
+    boolean PresenterB = false;
 
     /**初始化M层必须自己新建model,继承ICommonModelWs
      * 初始化P层根据需要自己新建或使用默认WsMvpPresenter,要使用默认就不用管initPresenter*/
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(initLayout());
+        int i = initLayout();
+        setContentView(i);
         m = initModel();
         ICommonPresenterWs presenterWs= initPresenter();
         if (presenterWs != null ){
             commonPresenterWs = presenterWs;
         }else {
+            PresenterB = true;
             commonPresenterWs = WsMvpPresenter.getWsMvpPresenter(this, this.m);
+            WsMvpPresenter.user = i;
         }
         initView();
         initData();
@@ -42,5 +46,14 @@ public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseAc
 
     protected abstract M initModel();
     protected abstract int initLayout();
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (PresenterB){
+            WsMvpPresenter.user = -1;
+            WsMvpPresenter.netWorkNumber = 0;
+        }
+    }
 }
 

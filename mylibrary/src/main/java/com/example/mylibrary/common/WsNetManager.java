@@ -85,18 +85,18 @@ public class WsNetManager {
     }
 
     /**传入Flowable对象,模式,数据*/
-    public <W> void newtWork(Flowable<W> info,ICommonPresenterWs iCommonPresenterWs,int mode,Object[] objects){
+    public <W> void newtWork(Flowable<W> info,ICommonPresenterWs iCommonPresenterWs,int mode,int users,Object[] objects){
         ResourceSubscriber<W> resourceSubscriber = info.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new ResourceSubscriber<W>() {
                     @Override
                     public void onNext(W w) {
-                        iCommonPresenterWs.onSuccess(mode, w);
+                        iCommonPresenterWs.onSuccess(mode, users,w);
                     }
 
                     @Override
-                    public void onError(Throwable t) {
-                        iCommonPresenterWs.onFailed(t);
+                    public void onError(Throwable t ) {
+                        iCommonPresenterWs.onFailed(users,t);
                     }
 
                     @Override

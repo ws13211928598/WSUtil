@@ -24,6 +24,7 @@ public  abstract class WsBaseFragment<M extends ICommonModelWs> extends BaseFrag
     public ICommonPresenterWs presenterWs;
     private FragmentActivity activity;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

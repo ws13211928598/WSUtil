@@ -8,7 +8,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
  * describe:
  */
 public interface ICommonViewWs<W> {
-    void onSuccess(int mode,W...ws);
-    void onFailed(Throwable throwable);
+    void onSuccess(int mode,int users,W...ws);
+    void onFailed(int users,Throwable throwable);
 
 }
