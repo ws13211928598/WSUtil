@@ -18,6 +18,7 @@ public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseAc
     public M m;
     public ICommonPresenterWs commonPresenterWs;
     boolean PresenterB = false;
+    public int user;
 
     /**初始化M层必须自己新建model,继承ICommonModelWs
      * 初始化P层根据需要自己新建或使用默认WsMvpPresenter,要使用默认就不用管initPresenter*/
@@ -25,6 +26,7 @@ public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseAc
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         int i = initLayout();
+        user = i;
         setContentView(i);
         m = initModel();
         ICommonPresenterWs presenterWs= initPresenter();
@@ -33,7 +35,7 @@ public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseAc
         }else {
             PresenterB = true;
             commonPresenterWs = WsMvpPresenter.getWsMvpPresenter(this, this.m);
-            WsMvpPresenter.user = i;
+            WsMvpPresenter.user = user;
         }
         initView();
         initData();
