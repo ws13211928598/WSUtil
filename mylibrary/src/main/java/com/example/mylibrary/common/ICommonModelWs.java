@@ -6,5 +6,5 @@ package com.example.mylibrary.common;
  * describe:
  */
 public interface ICommonModelWs <W>{
-    void initData(int mode,ICommonPresenterWs iCommonPresenterWs,W...ws);
+    void initData(int mode,int user,ICommonPresenterWs iCommonPresenterWs,W...ws);
 }

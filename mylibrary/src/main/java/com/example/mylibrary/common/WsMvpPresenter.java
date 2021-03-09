@@ -40,7 +40,7 @@ public class WsMvpPresenter implements ICommonPresenterWs{
         if (loadView!=null&&netWorkNumber==0){
             loadView.onAttachedToWindow();
         }
-        commonModelWs.initData(mode,this,objects);
+        commonModelWs.initData(mode,users,this,objects);
         if (user==users){
             netWorkNumber++;
         }
