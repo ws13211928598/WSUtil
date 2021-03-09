@@ -37,8 +37,8 @@ public class WsMvpPresenter implements ICommonPresenterWs{
 
     @Override
     public void getData(int mode,int users, Object[] objects) {
-        if (loadView!=null&&netWorkNumber==0){
-            loadView.onAttachedToWindow();
+        if (loadView!=null&&netWorkNumber>0){
+            loadView.show();
         }
         commonModelWs.initData(mode,users,this,objects);
         if (user==users){
@@ -53,7 +53,7 @@ public class WsMvpPresenter implements ICommonPresenterWs{
             netWorkNumber--;
         }
         if (loadView!=null&&netWorkNumber<=0){
-            loadView.onDetachedFromWindow();
+            loadView.dismiss();
         }
         commonViewWs.onSuccess(mode,users,objects);
     }
@@ -64,7 +64,7 @@ public class WsMvpPresenter implements ICommonPresenterWs{
             netWorkNumber--;
         }
         if (loadView!=null&&netWorkNumber<=0){
-            loadView.onDetachedFromWindow();
+            loadView.dismiss();
         }
         commonViewWs.onFailed(users,throwable);
     }
