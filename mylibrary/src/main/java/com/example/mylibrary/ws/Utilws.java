@@ -37,6 +37,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -75,7 +76,7 @@ public class Utilws {
                              ArrayList<Fragment> fragments,
                              int limit,
                              ArrayList<String> tabItem,
-                             IViewpager2ws iViewpager2ws) {
+                             List<Integer> IconList) {
         viewPager2.setAdapter(new FragmentStateAdapter(this_Context) {
             @NonNull
             @Override
@@ -93,7 +94,7 @@ public class Utilws {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 tab.setText(tabItem.get(position));
-                iViewpager2ws.setTabIcon(tab);
+                tab.setIcon(IconList.get(position));
             }
         }).attach();
     }
@@ -102,7 +103,7 @@ public class Utilws {
                              TabLayout tabLayout,
                              ArrayList<Fragment> fragments,
                              ArrayList<String> tabItem,
-                             IViewpager2ws iViewpager2ws) {
+                             List<Integer> IconList) {
         viewPager2.setAdapter(new FragmentStateAdapter(this_Context) {
             @NonNull
             @Override
@@ -119,7 +120,7 @@ public class Utilws {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 tab.setText(tabItem.get(position));
-                iViewpager2ws.setTabIcon(tab);
+                tab.setIcon(IconList.get(position));
             }
         }).attach();
     }
@@ -186,6 +187,8 @@ public class Utilws {
             }
         }).attach();
     }
+
+
 
     public PopupWindow popupWindowWs(View inflate) {
         PopupWindow popupWindow = new PopupWindow(inflate, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
