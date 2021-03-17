@@ -9,30 +9,19 @@ import com.example.mylibrary.utils.LoadView;
  */
 public class WsMvpPresenter implements ICommonPresenterWs{
 
-    private  static ICommonModelWs commonModelWs;
-    private  static ICommonViewWs commonViewWs;
-    public static WsMvpPresenter wsMvpPresenter;
-    public static LoadView loadView;
-    public static int user = -1;
-    static int netWorkNumber = 0;
-    private  <M extends ICommonModelWs> WsMvpPresenter() {
+    private   ICommonModelWs commonModelWs;
+    private   ICommonViewWs commonViewWs;
+    public  LoadView loadView;
+    public static  int userID = -1;
+    int netWorkNumber = 0;
 
+    public WsMvpPresenter(ICommonViewWs commonViewWs,ICommonModelWs commonModelWs ) {
+        this.commonModelWs = commonModelWs;
+        this.commonViewWs = commonViewWs;
     }
-    public static WsMvpPresenter getWsMvpPresenter(ICommonViewWs viewWs, ICommonModelWs m){
-        if (wsMvpPresenter==null) wsMvpPresenter = new WsMvpPresenter();
-        commonViewWs = viewWs;
-        commonModelWs = m;
-        return wsMvpPresenter;
 
-    }
-//LoadView instance = LoadView.getInstance();  选择要不要加载图标
-    public static WsMvpPresenter getWsMvpPresenter(ICommonViewWs viewWs, ICommonModelWs m, LoadView loadView1){
-        if (wsMvpPresenter==null) wsMvpPresenter = new WsMvpPresenter();
-        commonViewWs = viewWs;
-        loadView = loadView1;
-        commonModelWs = m;
-        loadView.onDetachedFromWindow();
-        return wsMvpPresenter;
+    public void setLoadView(LoadView loadView) {
+        this.loadView = loadView;
     }
 
     @Override
@@ -41,7 +30,7 @@ public class WsMvpPresenter implements ICommonPresenterWs{
             loadView.show();
         }
         commonModelWs.initData(mode,users,this,objects);
-        if (user==users){
+        if (users==userID) {
             netWorkNumber++;
         }
     }
@@ -49,9 +38,10 @@ public class WsMvpPresenter implements ICommonPresenterWs{
 
     @Override
     public void onSuccess(int mode, int users, Object[] objects) {
-        if (user==users){
+        if (users==userID) {
             netWorkNumber--;
         }
+
         if (loadView!=null&&netWorkNumber<=0){
             loadView.dismiss();
         }
@@ -60,7 +50,7 @@ public class WsMvpPresenter implements ICommonPresenterWs{
 
     @Override
     public void onFailed(int users, Throwable throwable) {
-        if (user==users){
+        if (users==userID) {
             netWorkNumber--;
         }
         if (loadView!=null&&netWorkNumber<=0){

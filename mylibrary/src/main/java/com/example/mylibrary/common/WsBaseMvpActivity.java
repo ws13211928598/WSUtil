@@ -25,17 +25,14 @@ public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseAc
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int i = initLayout();
-        user = i;
-        setContentView(i);
+        setContentView(initLayout());
         m = initModel();
         ICommonPresenterWs presenterWs= initPresenter();
         if (presenterWs != null ){
             commonPresenterWs = presenterWs;
         }else {
             PresenterB = true;
-            commonPresenterWs = WsMvpPresenter.getWsMvpPresenter(this, this.m);
-            WsMvpPresenter.user = user;
+            presenterWs= new WsMvpPresenter(this, this.m);
         }
         initView();
         initData();
@@ -49,13 +46,6 @@ public abstract class WsBaseMvpActivity<M extends ICommonModelWs> extends BaseAc
     protected abstract M initModel();
     protected abstract int initLayout();
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (PresenterB){
-            WsMvpPresenter.user = -1;
-            WsMvpPresenter.netWorkNumber = 0;
-        }
-    }
+
 }
 

@@ -43,7 +43,7 @@ public  abstract class WsBaseFragment<M extends ICommonModelWs> extends BaseFrag
         if (iCommonPresenterWs!= null){
             presenterWs = iCommonPresenterWs;
         }else {
-            presenterWs= WsMvpPresenter.getWsMvpPresenter(this, this.m);
+            presenterWs= new WsMvpPresenter(this, this.m);
         }
         initView();
         initData();
